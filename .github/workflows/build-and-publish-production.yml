@@ -1,62 +1,36 @@
-name: Build & Publish to release/production (pure git)
+name: Deploy Vue (Vite) to Firebase Hosting
 
 on:
   push:
-    branches:
+    branches: 
       - master
 
 jobs:
-  build-and-publish:
-    if: github.ref != 'refs/heads/release/production'
+  deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
-      - run: npm ci
-      - run: npm run build   # outputs to dist/
+      - name: Install deps
+        run: npm ci
 
-      - name: Publish to release/production
-        run: |
-          set -euo pipefail
+      - name: Build Vite app
+        run: npm run build
+        # Make sure package.json has: "build": "vite build"
 
-          git config user.name  "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
-          # Make sure we have up-to-date refs
-          git fetch origin --prune
-
-          # Create/update a worktree on the target branch
-          if git ls-remote --exit-code --heads origin release/production >/dev/null 2>&1; then
-            # Track the remote branch directly (not detached)
-            git worktree add --track -B release/production publish-dir origin/release/production
-          else
-            # First publish: create the branch
-            git worktree add -B release/production publish-dir
-          fi
-
-          # Clean the worktree without touching .git
-          cd publish-dir
-          # Remove tracked files
-          git rm -r -q . || true
-          # Remove untracked files/dirs (but keep .git)
-          git clean -fdx
-          cd ..
-
-          # Copy build output
-          rsync -a --delete --exclude='.git' dist/ publish-dir/
-
-          # Commit & push
-          cd publish-dir
-          git add -A
-          git commit -m "chore: publish $(date -u +'%Y-%m-%dT%H:%M:%SZ') from ${GITHUB_SHA}" || echo "No changes to commit"
-
-          # If the remote moved, this keeps you safe but still publishes
-          git push --force-with-lease origin HEAD:release/production
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ secrets.APPLICATION_ID }}
+          channelId: live  # production deploys on pushes to main
