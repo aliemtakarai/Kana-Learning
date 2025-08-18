@@ -1,0 +1,47 @@
+name: Build & Publish to release/production (pure git)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-publish:
+    if: github.ref != 'refs/heads/release/production'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+      - run: npm run build   # outputs to dist/
+
+      - name: Publish to release/production
+        run: |
+          set -e
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+          # create a worktree pointing at the target branch
+          git fetch origin
+          if git ls-remote --exit-code --heads origin release/production >/dev/null 2>&1; then
+            git worktree add publish-dir origin/release/production
+          else
+            git worktree add -B release/production publish-dir
+          fi
+
+          # replace contents with build output
+          rm -rf publish-dir/* publish-dir/.[!.]* publish-dir/..?* || true
+          cp -r dist/* publish-dir/
+
+          cd publish-dir
+          git add -A
+          git commit -m "chore: publish $(date -u +'%Y-%m-%dT%H:%M:%SZ') from ${GITHUB_SHA}" || echo "No changes to commit"
+          git push origin HEAD:release/production
