@@ -21,6 +21,9 @@
         <RouterLink to="/katakana" class="nav-link" :class="{ active: $route.name === 'katakana' }">
           {{ t('navigation.katakana') }}
         </RouterLink>
+        <RouterLink to="/kanji" class="nav-link" :class="{ active: $route.name === 'kanji' }">
+          {{ t('navigation.kanji') }}
+        </RouterLink>
         <RouterLink to="/quiz" class="nav-link" :class="{ active: $route.name === 'quiz' }">
           {{ t('navigation.quiz') }}
         </RouterLink>
@@ -97,6 +100,15 @@
             >
               <span class="mobile-link-icon">カ</span>
               {{ t('navigation.katakana') }}
+            </RouterLink>
+            <RouterLink 
+              to="/kanji" 
+              class="mobile-nav-link" 
+              @click="closeMobileMenu"
+              :class="{ active: $route.name === 'kanji' }"
+            >
+              <span class="mobile-link-icon">漢</span>
+              {{ t('navigation.kanji') }}
             </RouterLink>
             <RouterLink 
               to="/quiz" 

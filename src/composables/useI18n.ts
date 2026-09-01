@@ -34,6 +34,7 @@ const translations: Translations = {
       home: 'Home',
       hiragana: 'Hiragana',
       katakana: 'Katakana',
+      kanji: 'Kanji',
       quiz: 'Quiz',
       about: 'About'
     },
@@ -116,6 +117,24 @@ const translations: Translations = {
       handakutenInfo: 'Handakuten (゜) marks create \'p\' sounds with katakana \'h\' row characters.',
       combinationInfo: 'Combination katakana (Yōon) combine characters with small ya, yu, or yo (ャ, ュ, ョ) to represent blended sounds.'
     },
+    kanji: {
+      title: 'Kanji Characters',
+      description: 'Kanji (漢字) are Chinese characters used in the Japanese writing system. Explore kanji organized by JLPT levels from N5 to N1.',
+      onyomi: 'On\'yomi',
+      kunyomi: 'Kun\'yomi',
+      meaning: 'Meaning',
+      strokes: 'Strokes',
+      examples: 'Vocabulary Examples',
+      searchPlaceholder: 'Search kanji, reading, or meaning...',
+      allLevels: 'All Levels',
+      levelN5: 'JLPT N5',
+      levelN4: 'JLPT N4',
+      levelN3: 'JLPT N3',
+      levelN2: 'JLPT N2',
+      levelN1: 'JLPT N1',
+      totalKanji: 'Total Kanji',
+      noResults: 'No kanji found matching your query.'
+    },
     quiz: {
       title: 'Kana Quiz',
       selectLevel: 'Select Quiz Level',
@@ -179,6 +198,7 @@ const translations: Translations = {
       home: 'Beranda',
       hiragana: 'Hiragana',
       katakana: 'Katakana',
+      kanji: 'Kanji',
       quiz: 'Kuis',
       about: 'Tentang'
     },
@@ -260,6 +280,24 @@ const translations: Translations = {
       dakutenInfo: 'Tanda Dakuten (゛) mengubah pelafalan katakana dengan cara yang sama seperti hiragana.',
       handakutenInfo: 'Tanda Handakuten (゜) membuat suara \'p\' dengan karakter baris \'h\' katakana.',
       combinationInfo: 'Katakana kombinasi (Yōon) menggabungkan karakter dengan ya, yu, atau yo kecil (ャ, ュ, ョ) untuk mewakili suara gabungan.'
+    },
+    kanji: {
+      title: 'Karakter Kanji',
+      description: 'Kanji (漢字) adalah karakter Tionghoa yang digunakan dalam sistem penulisan Jepang. Pelajari kanji yang disusun berdasarkan level JLPT dari N5 hingga N1.',
+      onyomi: 'On\'yomi',
+      kunyomi: 'Kun\'yomi',
+      meaning: 'Arti',
+      strokes: 'Goresan',
+      examples: 'Contoh Kosakata',
+      searchPlaceholder: 'Cari kanji, cara baca, atau arti...',
+      allLevels: 'Semua Level',
+      levelN5: 'JLPT N5',
+      levelN4: 'JLPT N4',
+      levelN3: 'JLPT N3',
+      levelN2: 'JLPT N2',
+      levelN1: 'JLPT N1',
+      totalKanji: 'Total Kanji',
+      noResults: 'Tidak ada kanji yang sesuai dengan pencarian Anda.'
     },
     quiz: {
       title: 'Kuis Kana',
