@@ -264,15 +264,15 @@ const quizLevels = [
   {
     id: 'intermediate',
     icon: '🔥',
-    description: { en: 'Including Dakuten marks', id: 'Termasuk tanda Dakuten' },
-    characterCount: 132,
+    description: { en: 'Including Dakuten & Handakuten marks', id: 'Termasuk tanda Dakuten & Handakuten' },
+    characterCount: 142,
     estimatedTime: '~15 mins'
   },
   {
     id: 'advanced',
     icon: '⚡',
-    description: { en: 'Complete character set', id: 'Set karakter lengkap' },
-    characterCount: 152,
+    description: { en: 'Complete character set with combinations', id: 'Set karakter lengkap dengan kombinasi' },
+    characterCount: 208,
     estimatedTime: '~20 mins'
   }
 ]
@@ -291,7 +291,7 @@ const getQuizCharacters = (level: string): KanaCharacter[] => {
     case 'basic':
       return [...hiraganaBasic, ...katakanaBasic]
     case 'intermediate':
-      return [...allHiragana.slice(0, 66), ...allKatakana.slice(0, 66)]
+      return [...allHiragana.slice(0, 71), ...allKatakana.slice(0, 71)]
     case 'advanced':
       return [...allHiragana, ...allKatakana]
     default:
@@ -757,6 +757,7 @@ onMounted(() => {
   font-size: 4rem;
   font-weight: bold;
   color: var(--chocolate-primary);
+  white-space: nowrap;
 }
 
 .romaji-display {
@@ -764,6 +765,7 @@ onMounted(() => {
   font-weight: 600;
   color: var(--chocolate-primary);
   font-family: monospace;
+  white-space: nowrap;
 }
 
 .answer-instruction {
@@ -789,6 +791,7 @@ onMounted(() => {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .answer-btn:hover:not(:disabled) {

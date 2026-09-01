@@ -172,6 +172,43 @@ export const katakanaDakuten: KanaCharacter[] = [
   { kana: 'ボ', romaji: 'bo', example: { en: 'ball (ボール)', id: 'bola (ボール)' } }
 ];
 
+// Hiragana Combination (拗音) Characters
+export const hiraganaCombination: KanaCharacter[] = [
+  { kana: 'きゃ', romaji: 'kya', example: { en: 'guest / customer (きゃく)', id: 'tamu (きゃく)' } },
+  { kana: 'きゅ', romaji: 'kyu', example: { en: 'nine (きゅう)', id: 'sembilan (きゅう)' } },
+  { kana: 'きょ', romaji: 'kyo', example: { en: 'today (きょう)', id: 'hari ini (きょう)' } },
+  { kana: 'しゃ', romaji: 'sha', example: { en: 'photo (しゃしん)', id: 'foto (しゃしん)' } },
+  { kana: 'しゅ', romaji: 'shu', example: { en: 'hobby (しゅみ)', id: 'hobi (しゅみ)' } },
+  { kana: 'しょ', romaji: 'sho', example: { en: 'meal (しょくじ)', id: 'makan (しょくじ)' } },
+  { kana: 'ちゃ', romaji: 'cha', example: { en: 'tea (おちゃ)', id: 'teh (おちゃ)' } },
+  { kana: 'ちゅ', romaji: 'chu', example: { en: 'middle school (ちゅうがっこう)', id: 'SMP (ちゅうがっこう)' } },
+  { kana: 'ちょ', romaji: 'cho', example: { en: 'a little (ちょっと)', id: 'sebentar (ちょっと)' } },
+  { kana: 'にゃ', romaji: 'nya', example: { en: 'cat (にゃんこ)', id: 'kucing (にゃんこ)' } },
+  { kana: 'にゅ', romaji: 'nyu', example: { en: 'milk (ぎゅうにゅう)', id: 'susu (ぎゅうにゅう)' } },
+  { kana: 'にょ', romaji: 'nyo', example: { en: 'woman (にょうぼう)', id: 'wanita (にょうぼう)' } },
+  { kana: 'ひゃ', romaji: 'hya', example: { en: 'hundred (ひゃく)', id: 'seratus (ひゃく)' } },
+  { kana: 'ひゅ', romaji: 'hyu', example: { en: 'wind sound (ひゅう)', id: 'suara angin (ひゅう)' } },
+  { kana: 'ひょ', romaji: 'hyo', example: { en: 'table / chart (ひょう)', id: 'tabel (ひょう)' } },
+  { kana: 'みゃ', romaji: 'mya', example: { en: 'pulse (みゃく)', id: 'denyut nadi (みゃく)' } },
+  { kana: 'みゅ', romaji: 'myu', example: { en: 'music (みゅーじっく)', id: 'musik (みゅーじっく)' } },
+  { kana: 'みょ', romaji: 'myo', example: { en: 'tomorrow (みょうにち)', id: 'besok (みょうにち)' } },
+  { kana: 'りゃ', romaji: 'rya', example: { en: 'abbreviation (りゃく)', id: 'singkatan (りゃく)' } },
+  { kana: 'りゅ', romaji: 'ryu', example: { en: 'dragon (りゅう)', id: 'naga (りゅう)' } },
+  { kana: 'りょ', romaji: 'ryo', example: { en: 'travel (りょこう)', id: 'wisata (りょこう)' } },
+  { kana: 'ぎゃ', romaji: 'gya', example: { en: 'reverse (ぎゃく)', id: 'kebalikan (ぎゃく)' } },
+  { kana: 'ぎゅ', romaji: 'gyu', example: { en: 'beef (ぎゅうにく)', id: 'daging sapi (ぎゅうにく)' } },
+  { kana: 'ぎょ', romaji: 'gyo', example: { en: 'goldfish (きんぎょ)', id: 'ikan mas (きんぎょ)' } },
+  { kana: 'じゃ', romaji: 'ja', example: { en: 'obstacle (じゃま)', id: 'gangguan (じゃま)' } },
+  { kana: 'じゅ', romaji: 'ju', example: { en: 'lesson (じゅぎょう)', id: 'pelajaran (じゅぎょう)' } },
+  { kana: 'じょ', romaji: 'jo', example: { en: 'woman (じょせい)', id: 'wanita (じょせい)' } },
+  { kana: 'びゃ', romaji: 'bya', example: { en: 'white night (びゃくや)', id: 'malam putih (びゃくや)' } },
+  { kana: 'びゅ', romaji: 'byu', example: { en: 'wind sound (びゅう)', id: 'deru angin (びゅう)' } },
+  { kana: 'びょ', romaji: 'byo', example: { en: 'hospital (びょういん)', id: 'rumah sakit (びょういん)' } },
+  { kana: 'ぴゃ', romaji: 'pya', example: { en: 'six hundred (ろっぴゃく)', id: 'enam ratus (ろっぴゃく)' } },
+  { kana: 'ぴゅ', romaji: 'pyu', example: { en: 'pure (ぴゅあ)', id: 'murni (ぴゅあ)' } },
+  { kana: 'ぴょ', romaji: 'pyo', example: { en: 'hopping (ぴょんぴょん)', id: 'melompat (ぴょんぴょん)' } }
+];
+
 // Katakana Handakuten (゜) Characters
 export const katakanaHandakuten: KanaCharacter[] = [
   { kana: 'パ', romaji: 'pa', example: { en: 'party (パーティー)', id: 'pesta (パーティー)' } },
@@ -181,9 +218,46 @@ export const katakanaHandakuten: KanaCharacter[] = [
   { kana: 'ポ', romaji: 'po', example: { en: 'poster (ポスター)', id: 'poster (ポスター)' } }
 ];
 
+// Katakana Combination (拗音) Characters
+export const katakanaCombination: KanaCharacter[] = [
+  { kana: 'キャ', romaji: 'kya', example: { en: 'camp (キャンプ)', id: 'kemah (キャンプ)' } },
+  { kana: 'キュ', romaji: 'kyu', example: { en: 'cute (キュート)', id: 'lucu (キュート)' } },
+  { kana: 'キョ', romaji: 'kyo', example: { en: 'giant (キョジン)', id: 'raksasa (キョジン)' } },
+  { kana: 'シャ', romaji: 'sha', example: { en: 'shower (シャワー)', id: 'pancuran (シャワー)' } },
+  { kana: 'シュ', romaji: 'shu', example: { en: 'cream puff (シュークリーム)', id: 'kue sus (シュークリーム)' } },
+  { kana: 'ショ', romaji: 'sho', example: { en: 'shop (ショップ)', id: 'toko (ショップ)' } },
+  { kana: 'チャ', romaji: 'cha', example: { en: 'chance (チャンス)', id: 'kesempatan (チャンス)' } },
+  { kana: 'チュ', romaji: 'chu', example: { en: 'tulip (チューリップ)', id: 'tulip (チューリップ)' } },
+  { kana: 'チョ', romaji: 'cho', example: { en: 'chocolate (チョコレート)', id: 'cokelat (チョコレート)' } },
+  { kana: 'ニャ', romaji: 'nya', example: { en: 'cat sound (ニャー)', id: 'suara kucing (ニャー)' } },
+  { kana: 'ニュ', romaji: 'nyu', example: { en: 'news (ニュース)', id: 'berita (ニュース)' } },
+  { kana: 'ニョ', romaji: 'nyo', example: { en: 'gnocchi (ニョッキ)', id: 'gnocchi (ニョッキ)' } },
+  { kana: 'ヒャ', romaji: 'hya', example: { en: 'hundred (ヒャク)', id: 'seratus (ヒャク)' } },
+  { kana: 'ヒュ', romaji: 'hyu', example: { en: 'human (ヒューマン)', id: 'manusia (ヒューマン)' } },
+  { kana: 'ヒョ', romaji: 'hyo', example: { en: 'leopard (ヒョウ)', id: 'macan tutul (ヒョウ)' } },
+  { kana: 'ミャ', romaji: 'mya', example: { en: 'Myanmar (ミャンマー)', id: 'Myanmar (ミャンマー)' } },
+  { kana: 'ミュ', romaji: 'myu', example: { en: 'music (ミュージック)', id: 'musik (ミュージック)' } },
+  { kana: 'ミョ', romaji: 'myo', example: { en: 'strange (ミョウ)', id: 'aneh (ミョウ)' } },
+  { kana: 'リャ', romaji: 'rya', example: { en: 'llama (リャマ)', id: 'lama (リャマ)' } },
+  { kana: 'リュ', romaji: 'ryu', example: { en: 'backpack (リュック)', id: 'ransel (リュック)' } },
+  { kana: 'リョ', romaji: 'ryo', example: { en: 'ryokan (リョカン)', id: 'penginapan (リョカン)' } },
+  { kana: 'ギャ', romaji: 'gya', example: { en: 'gallery (ギャラリー)', id: 'galeri (ギャラリー)' } },
+  { kana: 'ギュ', romaji: 'gyu', example: { en: 'beef bowl (ギュウドン)', id: 'mangkuk daging (ギュウドン)' } },
+  { kana: 'ギョ', romaji: 'gyo', example: { en: 'gyoza (ギョーザ)', id: 'pangsit (ギョーザ)' } },
+  { kana: 'ジャ', romaji: 'ja', example: { en: 'jacket (ジャケット)', id: 'jaket (ジャケット)' } },
+  { kana: 'ジュ', romaji: 'ju', example: { en: 'juice (ジュース)', id: 'jus (ジュース)' } },
+  { kana: 'ジョ', romaji: 'jo', example: { en: 'jogging (ジョギング)', id: 'joging (ジョギング)' } },
+  { kana: 'ビャ', romaji: 'bya', example: { en: 'white night (ビャクヤ)', id: 'malam putih (ビャクヤ)' } },
+  { kana: 'ビュ', romaji: 'byu', example: { en: 'buffet (ビュッフェ)', id: 'prasmanan (ビュッフェ)' } },
+  { kana: 'ビョ', romaji: 'byo', example: { en: 'hospital (ビョウイン)', id: 'rumah sakit (ビョウイン)' } },
+  { kana: 'ピャ', romaji: 'pya', example: { en: 'chirp (ピャー)', id: 'cicit (ピャー)' } },
+  { kana: 'ピュ', romaji: 'pyu', example: { en: 'puree (ピューレ)', id: 'pure (ピューレ)' } },
+  { kana: 'ピョ', romaji: 'pyo', example: { en: 'hop (ピョン)', id: 'lompat (ピョン)' } }
+];
+
 // Combined arrays for quiz functionality
-export const allHiragana = [...hiraganaBasic, ...hiraganaDakuten, ...hiraganaHandakuten];
-export const allKatakana = [...katakanaBasic, ...katakanaDakuten, ...katakanaHandakuten];
+export const allHiragana = [...hiraganaBasic, ...hiraganaDakuten, ...hiraganaHandakuten, ...hiraganaCombination];
+export const allKatakana = [...katakanaBasic, ...katakanaDakuten, ...katakanaHandakuten, ...katakanaCombination];
 export const allKana = [...allHiragana, ...allKatakana];
 
 // Group definitions for navigation
@@ -199,6 +273,10 @@ export const hiraganaGroups: KanaGroup[] = [
   { 
     name: { en: 'Handakuten (゜)', id: 'Handakuten (゜)' }, 
     characters: hiraganaHandakuten 
+  },
+  { 
+    name: { en: 'Combination (拗音)', id: 'Kombinasi (拗音)' }, 
+    characters: hiraganaCombination 
   }
 ];
 
@@ -214,5 +292,9 @@ export const katakanaGroups: KanaGroup[] = [
   { 
     name: { en: 'Handakuten (゜)', id: 'Handakuten (゜)' }, 
     characters: katakanaHandakuten 
+  },
+  { 
+    name: { en: 'Combination (拗音)', id: 'Kombinasi (拗音)' }, 
+    characters: katakanaCombination 
   }
 ];

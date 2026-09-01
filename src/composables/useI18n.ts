@@ -67,7 +67,8 @@ const translations: Translations = {
         katakana: 'Katakana',
         basic: 'Basic',
         dakuten: 'Dakuten (゛)',
-        handakuten: 'Handakuten (゜)'
+        handakuten: 'Handakuten (゜)',
+        combination: 'Combination (拗音)'
       },
       quiz: {
         title: 'Ready to Test Your Skills?',
@@ -76,21 +77,21 @@ const translations: Translations = {
           basic: {
             title: 'Basic Level',
             description: 'Hiragana & Katakana fundamentals',
-            characters: '46 Characters',
+            characters: '92 Characters',
             time: '~10 mins',
             button: 'Start Basic Quiz'
           },
           intermediate: {
             title: 'Intermediate',
-            description: 'Including Dakuten marks',
-            characters: '66 Characters',
+            description: 'Including Dakuten & Handakuten marks',
+            characters: '142 Characters',
             time: '~15 mins',
             button: 'Start Intermediate'
           },
           advanced: {
             title: 'Advanced',
-            description: 'Complete character set',
-            characters: '76 Characters',
+            description: 'Complete character set with combinations',
+            characters: '208 Characters',
             time: '~20 mins',
             button: 'Start Advanced'
           }
@@ -103,7 +104,8 @@ const translations: Translations = {
       learnMore: 'Hiragana is used for native Japanese words and grammatical elements. Each character represents a sound (syllable) and is phonetic.',
       basicInfo: 'The basic hiragana chart contains 46 characters, representing all the sounds in Japanese.',
       dakutenInfo: 'Dakuten (゛) marks modify the pronunciation of certain hiragana characters.',
-      handakutenInfo: 'Handakuten (゜) marks are used only with the \'h\' row characters to create \'p\' sounds.'
+      handakutenInfo: 'Handakuten (゜) marks are used only with the \'h\' row characters to create \'p\' sounds.',
+      combinationInfo: 'Combination characters (Yōon) combine standard kana with small ya, yu, or yo (ゃ, ゅ, ょ) to create blended syllables.'
     },
     katakana: {
       title: 'Katakana Characters',
@@ -111,7 +113,8 @@ const translations: Translations = {
       learnMore: 'Katakana characters represent the same sounds as hiragana but are used for different purposes in Japanese writing.',
       basicInfo: 'The basic katakana chart contains 46 characters, each corresponding to a hiragana character.',
       dakutenInfo: 'Dakuten (゛) marks modify katakana pronunciation in the same way as hiragana.',
-      handakutenInfo: 'Handakuten (゜) marks create \'p\' sounds with katakana \'h\' row characters.'
+      handakutenInfo: 'Handakuten (゜) marks create \'p\' sounds with katakana \'h\' row characters.',
+      combinationInfo: 'Combination katakana (Yōon) combine characters with small ya, yu, or yo (ャ, ュ, ョ) to represent blended sounds.'
     },
     quiz: {
       title: 'Kana Quiz',
@@ -209,7 +212,8 @@ const translations: Translations = {
         katakana: 'Katakana',
         basic: 'Dasar',
         dakuten: 'Dakuten (゛)',
-        handakuten: 'Handakuten (゜)'
+        handakuten: 'Handakuten (゜)',
+        combination: 'Kombinasi (拗音)'
       },
       quiz: {
         title: 'Siap Menguji Kemampuan Anda?',
@@ -218,21 +222,21 @@ const translations: Translations = {
           basic: {
             title: 'Level Dasar',
             description: 'Dasar-dasar Hiragana & Katakana',
-            characters: '46 Karakter',
+            characters: '92 Karakter',
             time: '~10 menit',
             button: 'Mulai Kuis Dasar'
           },
           intermediate: {
             title: 'Menengah',
-            description: 'Termasuk tanda Dakuten',
-            characters: '66 Karakter',
+            description: 'Termasuk tanda Dakuten & Handakuten',
+            characters: '142 Karakter',
             time: '~15 menit',
             button: 'Mulai Menengah'
           },
           advanced: {
             title: 'Lanjutan',
-            description: 'Set karakter lengkap',
-            characters: '76 Karakter',
+            description: 'Set karakter lengkap dengan kombinasi',
+            characters: '208 Karakter',
             time: '~20 menit',
             button: 'Mulai Lanjutan'
           }
@@ -245,7 +249,8 @@ const translations: Translations = {
       learnMore: 'Hiragana digunakan untuk kata-kata asli Jepang dan elemen tata bahasa. Setiap karakter mewakili suara (suku kata) dan bersifat fonetik.',
       basicInfo: 'Tabel hiragana dasar berisi 46 karakter, mewakili semua suara dalam bahasa Jepang.',
       dakutenInfo: 'Tanda Dakuten (゛) mengubah pelafalan karakter hiragana tertentu.',
-      handakutenInfo: 'Tanda Handakuten (゜) hanya digunakan dengan karakter baris \'h\' untuk membuat suara \'p\'.'
+      handakutenInfo: 'Tanda Handakuten (゜) hanya digunakan dengan karakter baris \'h\' untuk membuat suara \'p\'.',
+      combinationInfo: 'Karakter kombinasi (Yōon) menggabungkan kana standar dengan ya, yu, atau yo kecil (ゃ, ゅ, ょ) untuk menghasilkan suku kata gabungan.'
     },
     katakana: {
       title: 'Karakter Katakana',
@@ -253,7 +258,8 @@ const translations: Translations = {
       learnMore: 'Karakter katakana mewakili suara yang sama dengan hiragana tetapi digunakan untuk tujuan yang berbeda dalam penulisan Jepang.',
       basicInfo: 'Tabel katakana dasar berisi 46 karakter, masing-masing sesuai dengan karakter hiragana.',
       dakutenInfo: 'Tanda Dakuten (゛) mengubah pelafalan katakana dengan cara yang sama seperti hiragana.',
-      handakutenInfo: 'Tanda Handakuten (゜) membuat suara \'p\' dengan karakter baris \'h\' katakana.'
+      handakutenInfo: 'Tanda Handakuten (゜) membuat suara \'p\' dengan karakter baris \'h\' katakana.',
+      combinationInfo: 'Katakana kombinasi (Yōon) menggabungkan karakter dengan ya, yu, atau yo kecil (ャ, ュ, ョ) untuk mewakili suara gabungan.'
     },
     quiz: {
       title: 'Kuis Kana',

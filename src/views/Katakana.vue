@@ -23,6 +23,10 @@
               <span class="stat-number">5</span>
               <span class="stat-label">{{ t('home.charts.handakuten') }}</span>
             </div>
+            <div class="stat-item">
+              <span class="stat-number">33</span>
+              <span class="stat-label">{{ t('home.charts.combination') }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -46,6 +50,11 @@
             <div class="info-icon">パ</div>
             <h3>{{ t('home.charts.handakuten') }}</h3>
             <p>{{ t('katakana.handakutenInfo') }}</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">キャ</div>
+            <h3>{{ t('home.charts.combination') }}</h3>
+            <p>{{ t('katakana.combinationInfo') }}</p>
           </div>
         </div>
       </div>
@@ -84,6 +93,16 @@
             <div class="btn-content">
               <span class="btn-title">{{ t('home.charts.handakuten') }}</span>
               <span class="btn-subtitle">5 {{ t('common.total') }}</span>
+            </div>
+          </button>
+          <button 
+            :class="['category-btn', { active: activeCategory === 'combination' }]"
+            @click="activeCategory = 'combination'"
+          >
+            <span class="btn-number">04</span>
+            <div class="btn-content">
+              <span class="btn-title">{{ t('home.charts.combination') }}</span>
+              <span class="btn-subtitle">33 {{ t('common.total') }}</span>
             </div>
           </button>
         </div>
@@ -160,12 +179,12 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useI18n } from '../composables/useI18n'
-import { katakanaBasic, katakanaDakuten, katakanaHandakuten } from '../data/kanaData'
+import { katakanaBasic, katakanaDakuten, katakanaHandakuten, katakanaCombination } from '../data/kanaData'
 import type { KanaCharacter } from '../data/kanaData'
 
 const { t, currentLanguage } = useI18n()
 
-const activeCategory = ref<'basic' | 'dakuten' | 'handakuten'>('basic')
+const activeCategory = ref<'basic' | 'dakuten' | 'handakuten' | 'combination'>('basic')
 const selectedCharacter = ref<KanaCharacter | null>(null)
 
 const getCurrentCharacters = computed(() => {
@@ -173,6 +192,7 @@ const getCurrentCharacters = computed(() => {
     case 'basic': return katakanaBasic
     case 'dakuten': return katakanaDakuten
     case 'handakuten': return katakanaHandakuten
+    case 'combination': return katakanaCombination
     default: return katakanaBasic
   }
 })
@@ -445,6 +465,9 @@ const playSound = (char: KanaCharacter) => {
   color: var(--chocolate-primary);
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 1.2;
 }
 
 .kana-card:hover .kana-char {
@@ -456,6 +479,7 @@ const playSound = (char: KanaCharacter) => {
   font-size: 1rem;
   font-weight: 600;
   color: var(--chocolate-light);
+  white-space: nowrap;
 }
 
 .card-example {
@@ -533,6 +557,7 @@ const playSound = (char: KanaCharacter) => {
   font-weight: bold;
   color: var(--chocolate-primary);
   margin-bottom: 1rem;
+  white-space: nowrap;
 }
 
 .modal-romaji {
@@ -540,6 +565,7 @@ const playSound = (char: KanaCharacter) => {
   font-weight: 600;
   color: var(--chocolate-light);
   margin-bottom: 2rem;
+  white-space: nowrap;
 }
 
 .modal-example {
@@ -648,7 +674,7 @@ const playSound = (char: KanaCharacter) => {
   }
 
   .kana-grid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     gap: 1rem;
   }
 
@@ -659,6 +685,7 @@ const playSound = (char: KanaCharacter) => {
 
   .modal-char {
     font-size: 3rem;
+    white-space: nowrap;
   }
 }
 
@@ -668,7 +695,7 @@ const playSound = (char: KanaCharacter) => {
   }
 
   .kana-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   }
 
   .kana-card {
@@ -676,7 +703,8 @@ const playSound = (char: KanaCharacter) => {
   }
 
   .kana-char {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    white-space: nowrap;
   }
 }
 </style>

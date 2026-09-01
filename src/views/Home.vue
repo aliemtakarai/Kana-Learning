@@ -137,6 +137,13 @@
               <span class="tab-number">03</span>
               <span class="tab-text">{{ t('home.charts.handakuten') }}</span>
             </button>
+            <button 
+              :class="['category-tab', { active: activeCategory === 'combination' }]"
+              @click="activeCategory = 'combination'"
+            >
+              <span class="tab-number">04</span>
+              <span class="tab-text">{{ t('home.charts.combination') }}</span>
+            </button>
           </div>
           
           <!-- Kana Grid -->
@@ -168,10 +175,6 @@
           </div>
           
           <div class="image-placeholder-small">
-            <div class="placeholder-content">
-              <span class="quiz-icon">🎯</span>
-              <p>Quiz Image Here</p>
-            </div>
           </div>
         </div>
         
@@ -246,9 +249,11 @@ import {
   hiraganaBasic,
   hiraganaDakuten,
   hiraganaHandakuten,
+  hiraganaCombination,
   katakanaBasic,
   katakanaDakuten,
-  katakanaHandakuten
+  katakanaHandakuten,
+  katakanaCombination
 } from '../data/kanaData'
 
 const router = useRouter()
@@ -256,7 +261,7 @@ const { t } = useI18n()
 
 const chartsSection = ref<HTMLElement>()
 const activeChart = ref<'hiragana' | 'katakana'>('hiragana')
-const activeCategory = ref<'basic' | 'dakuten' | 'handakuten'>('basic')
+const activeCategory = ref<'basic' | 'dakuten' | 'handakuten' | 'combination'>('basic')
 
 const getCurrentCharacters = computed(() => {
   const chartType = activeChart.value
@@ -267,6 +272,7 @@ const getCurrentCharacters = computed(() => {
       case 'basic': return hiraganaBasic
       case 'dakuten': return hiraganaDakuten
       case 'handakuten': return hiraganaHandakuten
+      case 'combination': return hiraganaCombination
       default: return hiraganaBasic
     }
   } else {
@@ -274,6 +280,7 @@ const getCurrentCharacters = computed(() => {
       case 'basic': return katakanaBasic
       case 'dakuten': return katakanaDakuten
       case 'handakuten': return katakanaHandakuten
+      case 'combination': return katakanaCombination
       default: return katakanaBasic
     }
   }
@@ -682,7 +689,7 @@ onMounted(() => {
 
 .modern-kana-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   gap: 1rem;
 }
 
@@ -712,11 +719,14 @@ onMounted(() => {
 }
 
 .kana-display {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: bold;
   color: var(--chocolate-primary);
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  display: inline-block;
+  line-height: 1.2;
 }
 
 .modern-kana-card:hover .kana-display {
@@ -728,6 +738,7 @@ onMounted(() => {
   font-size: 0.9rem;
   color: var(--chocolate-light);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .card-hover-effect {
@@ -947,8 +958,13 @@ onMounted(() => {
   }
   
   .modern-kana-grid {
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
     gap: 0.8rem;
+  }
+
+  .kana-display {
+    font-size: 1.6rem;
+    white-space: nowrap;
   }
   
   .section-header h2 {
