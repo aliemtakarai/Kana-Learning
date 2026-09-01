@@ -1,33 +1,44 @@
 
 # Kana Learning
 
-Kana Learning is a web application designed to help users learn and practice Japanese Hiragana and Katakana characters. Built with Vue.js and Vite, it provides interactive quizzes and reference views for both kana sets.
+Kana Learning is a modern, responsive web application designed to help users learn, practice, and master Japanese **Hiragana** and **Katakana** writing systems. Built with Vue 3, TypeScript, and Vite, it provides interactive charts, detailed character cards with bilingual examples, and adaptive quizzes.
 
-## Features
-- Hiragana and Katakana reference pages
-- Interactive quiz to test your kana knowledge
-- Simple and clean UI
-- Responsive design
-- Multilingual support (i18n)
+## ✨ Features
 
-## Project Structure
-```
-public/           # Static assets
+- **Complete Kana Character Reference (208 Total Characters)**:
+  - **Basic (Gojūon)**: 46 Hiragana & 46 Katakana characters.
+  - **Dakuten (゛)**: 20 Hiragana & 20 Katakana characters.
+  - **Handakuten (゜)**: 5 Hiragana & 5 Katakana characters.
+  - **Combination (拗音 / Yōon)**: 33 Hiragana & 33 Katakana blended syllable characters (e.g., `きゃ`, `シュ`, `ちょ`).
+- **Interactive Character Cards & Modals**: View Romaji, pronunciation guides, and example vocabulary.
+- **Adaptive Quiz System**:
+  - **Basic Level (92 characters)**: Hiragana & Katakana fundamentals.
+  - **Intermediate Level (142 characters)**: Includes Dakuten & Handakuten marks.
+  - **Advanced Level (208 characters)**: Complete character set including all combination syllables.
+  - **Dual Quiz Modes**: Kana to Romaji & Romaji to Kana.
+  - Instant answer validation, score calculation, and progress tracking.
+- **Multilingual Support (i18n)**: Switch seamlessly between English (`EN`) and Indonesian (`ID`).
+- **Modern & Mobile-Optimized Design**: Clean chocolate-and-cream aesthetic with full responsiveness.
+
+## 📁 Project Structure
+
+```text
+public/             # Static assets (images, favicon)
 src/
-  App.vue         # Main app component
-  main.ts         # App entry point
-  components/     # Shared Vue components
-  composables/    # Reusable logic (e.g., i18n)
-  data/           # Kana data
-  router/         # Vue Router setup
-  views/          # Main views (Home, Hiragana, Katakana, Quiz)
+├── App.vue         # Main application component
+├── main.ts         # App entry point
+├── components/     # Reusable components (e.g., NavBar)
+├── composables/    # Reusable composables (i18n support)
+├── data/           # Kana dataset (Basic, Dakuten, Handakuten, Combination)
+├── router/         # Vue Router configuration
+└── views/          # Page views (Home, Hiragana, Katakana, Quiz)
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js (v16+ recommended)
-- npm or yarn
+- npm, pnpm, or yarn
 
 ### Installation
 ```bash
@@ -38,7 +49,6 @@ npm install
 ```bash
 npm run dev
 ```
-
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### Building for Production
@@ -51,8 +61,8 @@ npm run build
 npm run preview
 ```
 
-## Contributing
+## 🤝 Contributing
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+## 📄 License
 MIT
