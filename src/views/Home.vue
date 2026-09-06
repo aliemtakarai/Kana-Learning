@@ -8,13 +8,6 @@
       
       <div class="hero-container">
         <div class="hero-content">
-          <div class="hero-badge">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0l3.09 8.26L24 12l-8.91 3.74L12 24l-3.09-8.26L0 12l8.91-3.74L12 0z"/>
-            </svg>
-            <span>{{ t('home.heroText') }}</span>
-          </div>
-          
           <h1 class="hero-title">
             <span class="title-line">{{ t('home.subtitle') }}</span>
           </h1>
@@ -349,19 +342,6 @@ onMounted(() => {
   z-index: 1;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(245, 245, 220, 0.2);
-  padding: 0.5rem 1.25rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(245, 245, 220, 0.3);
-  backdrop-filter: blur(10px);
-}
 
 .hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
@@ -906,10 +886,31 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: calc(70px + 1.5rem) 1.25rem 3rem;
+  }
+
   .hero-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.25rem;
     text-align: center;
+    padding: 0;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-description {
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+
+  .hero-image {
+    max-width: 320px;
   }
   
   .image-placeholder {
@@ -917,8 +918,18 @@ onMounted(() => {
     height: 200px;
   }
   
+  .features-section,
+  .charts-section,
+  .quiz-cta-section {
+    padding: 3.5rem 0;
+  }
+
   .features-grid {
     grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    padding: 2rem 1.5rem;
   }
   
   .chart-selector {
@@ -941,11 +952,47 @@ onMounted(() => {
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 1rem;
+  .hero {
+    padding: calc(65px + 1.25rem) 1rem 2.25rem;
   }
-  
+
   .hero-container {
+    gap: 1.75rem;
+    padding: 0;
+  }
+
+  .hero-title {
+    font-size: 1.95rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-image {
+    max-width: 260px;
+  }
+
+  .hero-cta {
+    gap: 0.75rem;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .features-section,
+  .charts-section,
+  .quiz-cta-section {
+    padding: 2.75rem 0;
+  }
+
+  .container {
     padding: 0 1rem;
   }
   
@@ -973,11 +1020,7 @@ onMounted(() => {
   }
   
   .section-header h2 {
-    font-size: 2rem;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
+    font-size: 1.85rem;
   }
 }
 
