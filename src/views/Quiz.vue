@@ -543,95 +543,99 @@ const formatReading = (k: KanjiCharacter): string => {
   return k.onyomi || k.kunyomi
 }
 
-const generateQuestion = (
-  item: KanaCharacter | KanjiCharacter,
-  category: 'kana' | 'kanji',
+const generateKanaQuestion = (
+  kanaChar: KanaCharacter,
   type: string,
-  fullPool: (KanaCharacter | KanjiCharacter)[]
+  pool: KanaCharacter[]
 ): QuestionData => {
-  if (category === 'kana') {
-    const kanaChar = item as KanaCharacter
-    const pool = fullPool as KanaCharacter[]
-    if (type === 'kanaToRomaji') {
-      const correct = kanaChar.romaji
-      const distractors = shuffleArray(
-        Array.from(new Set(pool.map(c => c.romaji).filter(r => r !== correct)))
-      ).slice(0, 3)
-      return {
-        prompt: kanaChar.kana,
-        isChar: true,
-        correctAnswer: correct,
-        options: shuffleArray([correct, ...distractors]),
-        rawKana: kanaChar
-      }
-    } else {
-      const correct = kanaChar.kana
-      const distractors = shuffleArray(
-        Array.from(new Set(pool.map(c => c.kana).filter(k => k !== correct)))
-      ).slice(0, 3)
-      return {
-        prompt: kanaChar.romaji,
-        isChar: false,
-        correctAnswer: correct,
-        options: shuffleArray([correct, ...distractors]),
-        rawKana: kanaChar
-      }
+  if (type === 'kanaToRomaji') {
+    const correct = kanaChar.romaji
+    const distractors = shuffleArray(
+      Array.from(new Set(pool.map(c => c.romaji).filter(r => r !== correct)))
+    ).slice(0, 3)
+    return {
+      prompt: kanaChar.kana,
+      isChar: true,
+      correctAnswer: correct,
+      options: shuffleArray([correct, ...distractors]),
+      rawKana: kanaChar
     }
   } else {
-    const kanjiChar = item as KanjiCharacter
-    const pool = fullPool as KanjiCharacter[]
-    const lang = currentLanguage.value
+    const correct = kanaChar.kana
+    const distractors = shuffleArray(
+      Array.from(new Set(pool.map(c => c.kana).filter(k => k !== correct)))
+    ).slice(0, 3)
+    return {
+      prompt: kanaChar.romaji,
+      isChar: false,
+      correctAnswer: correct,
+      options: shuffleArray([correct, ...distractors]),
+      rawKana: kanaChar
+    }
+  }
+}
 
-    if (type === 'kanjiToMeaning') {
-      const correct = kanjiChar.meaning[lang]
-      const distractors = shuffleArray(
-        Array.from(new Set(pool.map(k => k.meaning[lang]).filter(m => m !== correct)))
-      ).slice(0, 3)
-      return {
-        prompt: kanjiChar.kanji,
-        isChar: true,
-        correctAnswer: correct,
-        options: shuffleArray([correct, ...distractors]),
-        rawKanji: kanjiChar
-      }
-    } else if (type === 'meaningToKanji') {
-      const correct = kanjiChar.kanji
-      const distractors = shuffleArray(
-        Array.from(new Set(pool.map(k => k.kanji).filter(k => k !== correct)))
-      ).slice(0, 3)
-      return {
-        prompt: kanjiChar.meaning[lang],
-        isChar: false,
-        correctAnswer: correct,
-        options: shuffleArray([correct, ...distractors]),
-        rawKanji: kanjiChar
-      }
-    } else {
-      // kanjiToReading
-      const correct = formatReading(kanjiChar)
-      const distractors = shuffleArray(
-        Array.from(new Set(pool.map(k => formatReading(k)).filter(r => r !== correct)))
-      ).slice(0, 3)
-      return {
-        prompt: kanjiChar.kanji,
-        isChar: true,
-        correctAnswer: correct,
-        options: shuffleArray([correct, ...distractors]),
-        rawKanji: kanjiChar
-      }
+const generateKanjiQuestion = (
+  kanjiChar: KanjiCharacter,
+  type: string,
+  pool: KanjiCharacter[]
+): QuestionData => {
+  const lang = currentLanguage.value
+
+  if (type === 'kanjiToMeaning') {
+    const correct = kanjiChar.meaning[lang]
+    const distractors = shuffleArray(
+      Array.from(new Set(pool.map(k => k.meaning[lang]).filter(m => m !== correct)))
+    ).slice(0, 3)
+    return {
+      prompt: kanjiChar.kanji,
+      isChar: true,
+      correctAnswer: correct,
+      options: shuffleArray([correct, ...distractors]),
+      rawKanji: kanjiChar
+    }
+  } else if (type === 'meaningToKanji') {
+    const correct = kanjiChar.kanji
+    const distractors = shuffleArray(
+      Array.from(new Set(pool.map(k => k.kanji).filter(k => k !== correct)))
+    ).slice(0, 3)
+    return {
+      prompt: kanjiChar.meaning[lang],
+      isChar: false,
+      correctAnswer: correct,
+      options: shuffleArray([correct, ...distractors]),
+      rawKanji: kanjiChar
+    }
+  } else {
+    // kanjiToReading
+    const correct = formatReading(kanjiChar)
+    const distractors = shuffleArray(
+      Array.from(new Set(pool.map(k => formatReading(k)).filter(r => r !== correct)))
+    ).slice(0, 3)
+    return {
+      prompt: kanjiChar.kanji,
+      isChar: true,
+      correctAnswer: correct,
+      options: shuffleArray([correct, ...distractors]),
+      rawKanji: kanjiChar
     }
   }
 }
 
 const startQuiz = () => {
-  const pool = quizCategory.value === 'kana' 
-    ? getKanaCharacters(selectedLevel.value) 
-    : getKanjiCharacters(selectedLevel.value)
-
-  const pickedItems = shuffleArray(pool).slice(0, 10)
-  quizQuestions.value = pickedItems.map(item =>
-    generateQuestion(item, quizCategory.value, quizType.value, pool)
-  )
+  if (quizCategory.value === 'kana') {
+    const pool = getKanaCharacters(selectedLevel.value)
+    const pickedItems = shuffleArray(pool).slice(0, 10)
+    quizQuestions.value = pickedItems.map(item =>
+      generateKanaQuestion(item, quizType.value, pool)
+    )
+  } else {
+    const pool = getKanjiCharacters(selectedLevel.value)
+    const pickedItems = shuffleArray(pool).slice(0, 10)
+    quizQuestions.value = pickedItems.map(item =>
+      generateKanjiQuestion(item, quizType.value, pool)
+    )
+  }
 
   currentQuestionIndex.value = 0
   correctAnswers.value = 0
