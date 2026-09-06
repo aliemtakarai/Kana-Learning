@@ -9,7 +9,10 @@
       <div class="hero-container">
         <div class="hero-content">
           <div class="hero-badge">
-            ✨ {{ t('home.heroText') }}
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0l3.09 8.26L24 12l-8.91 3.74L12 24l-3.09-8.26L0 12l8.91-3.74L12 0z"/>
+            </svg>
+            <span>{{ t('home.heroText') }}</span>
           </div>
           
           <h1 class="hero-title">
@@ -347,9 +350,11 @@ onMounted(() => {
 }
 
 .hero-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   background: rgba(245, 245, 220, 0.2);
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.25rem;
   border-radius: 50px;
   font-size: 0.9rem;
   font-weight: 500;

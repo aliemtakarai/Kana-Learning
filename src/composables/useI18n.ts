@@ -41,7 +41,7 @@ const translations: Translations = {
     home: {
       title: 'Kana Study',
       subtitle: 'Master Hiragana & Katakana',
-      description: 'Discover the beauty of Japanese writing systems through interactive charts, engaging quizzes, and a modern learning experience designed for all skill levels.',
+      description: 'Your complete guide to mastering Japanese writing systems — explore 208 Kana characters, JLPT N5–N1 Kanji, and test your knowledge with interactive quizzes.',
       heroText: 'Interactive Japanese Learning',
       startLearning: 'Start Learning',
       takeQuiz: 'Take Quiz',
@@ -136,13 +136,20 @@ const translations: Translations = {
       noResults: 'No kanji found matching your query.'
     },
     quiz: {
-      title: 'Kana Quiz',
+      title: 'Quiz',
+      kanaQuiz: 'Kana Quiz',
+      kanjiQuiz: 'Kanji Quiz',
       selectLevel: 'Select Quiz Level',
+      selectKanaLevel: 'Select Kana Quiz Level',
+      selectKanjiLevel: 'Select JLPT Kanji Level',
       question: 'Question',
       of: 'of',
       whatIs: 'What is the',
       character: 'character?',
       romaji: 'romaji for',
+      whatIsMeaningOf: 'What is the meaning of this Kanji?',
+      whichKanjiMeans: 'Which Kanji means:',
+      whatIsReadingOf: 'What is the reading of this Kanji?',
       chooseAnswer: 'Choose your answer:',
       correct: 'Correct!',
       incorrect: 'Incorrect!',
@@ -154,6 +161,7 @@ const translations: Translations = {
       needPractice: 'Keep practicing!',
       restartQuiz: 'Restart Quiz',
       backToHome: 'Back to Home',
+      changeLevel: 'Change Level / Mode',
       timeUp: 'Time\'s up!',
       timeRemaining: 'Time remaining',
       seconds: 'seconds',
@@ -165,7 +173,10 @@ const translations: Translations = {
       },
       types: {
         kanaToRomaji: 'Kana to Romaji',
-        romajiToKana: 'Romaji to Kana'
+        romajiToKana: 'Romaji to Kana',
+        kanjiToMeaning: 'Kanji to Meaning',
+        meaningToKanji: 'Meaning to Kanji',
+        kanjiToReading: 'Kanji to Reading'
       }
     },
     about: {
@@ -205,7 +216,7 @@ const translations: Translations = {
     home: {
       title: 'Belajar Kana',
       subtitle: 'Kuasai Hiragana & Katakana',
-      description: 'Temukan keindahan sistem penulisan Jepang melalui tabel interaktif, kuis menarik, dan pengalaman belajar modern yang dirancang untuk semua tingkat kemampuan.',
+      description: 'Panduan lengkap Anda untuk menguasai sistem penulisan bahasa Jepang — pelajari 208 karakter Kana, Kanji JLPT N5–N1, dan uji pengetahuan Anda dengan kuis interaktif.',
       heroText: 'Pembelajaran Bahasa Jepang Interaktif',
       startLearning: 'Mulai Belajar',
       takeQuiz: 'Ikuti Kuis',
@@ -300,13 +311,20 @@ const translations: Translations = {
       noResults: 'Tidak ada kanji yang sesuai dengan pencarian Anda.'
     },
     quiz: {
-      title: 'Kuis Kana',
+      title: 'Kuis',
+      kanaQuiz: 'Kuis Kana',
+      kanjiQuiz: 'Kuis Kanji',
       selectLevel: 'Pilih Level Kuis',
+      selectKanaLevel: 'Pilih Level Kuis Kana',
+      selectKanjiLevel: 'Pilih Level Kanji JLPT',
       question: 'Pertanyaan',
       of: 'dari',
       whatIs: 'Apa',
-      character: 'karakter?',
+      character: 'karakter ini?',
       romaji: 'romaji untuk',
+      whatIsMeaningOf: 'Apa arti dari Kanji ini?',
+      whichKanjiMeans: 'Manakah Kanji yang berarti:',
+      whatIsReadingOf: 'Bagaimana cara membaca Kanji ini?',
       chooseAnswer: 'Pilih jawaban Anda:',
       correct: 'Benar!',
       incorrect: 'Salah!',
@@ -318,6 +336,7 @@ const translations: Translations = {
       needPractice: 'Terus berlatih!',
       restartQuiz: 'Mulai Ulang Kuis',
       backToHome: 'Kembali ke Beranda',
+      changeLevel: 'Ganti Level / Mode',
       timeUp: 'Waktu habis!',
       timeRemaining: 'Waktu tersisa',
       seconds: 'detik',
@@ -329,7 +348,10 @@ const translations: Translations = {
       },
       types: {
         kanaToRomaji: 'Kana ke Romaji',
-        romajiToKana: 'Romaji ke Kana'
+        romajiToKana: 'Romaji ke Kana',
+        kanjiToMeaning: 'Kanji ke Arti',
+        meaningToKanji: 'Arti ke Kanji',
+        kanjiToReading: 'Kanji ke Cara Baca'
       }
     },
     about: {
