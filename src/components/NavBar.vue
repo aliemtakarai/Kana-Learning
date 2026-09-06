@@ -1,8 +1,9 @@
 <template>
+  <!-- Top Navbar / Header -->
   <nav class="navbar" :class="{ 'scrolled': isScrolled }">
     <div class="nav-container">
       <!-- Logo/Brand -->
-      <RouterLink to="/" class="brand">
+      <RouterLink to="/" class="brand" @click="handleNavClick('home')">
         <div class="brand-icon">
           <span class="kana-icon">あ</span>
           <span class="kana-icon">カ</span>
@@ -21,6 +22,9 @@
         <RouterLink to="/katakana" class="nav-link" :class="{ active: $route.name === 'katakana' }">
           {{ t('navigation.katakana') }}
         </RouterLink>
+        <RouterLink to="/kanji" class="nav-link" :class="{ active: $route.name === 'kanji' }">
+          {{ t('navigation.kanji') }}
+        </RouterLink>
         <RouterLink to="/quiz" class="nav-link" :class="{ active: $route.name === 'quiz' }">
           {{ t('navigation.quiz') }}
         </RouterLink>
@@ -31,123 +35,117 @@
         <button 
           :class="['lang-btn', { active: currentLanguage === 'en' }]"
           @click="setLanguage('en')"
+          aria-label="Switch language to English"
         >
           EN
         </button>
         <button 
           :class="['lang-btn', { active: currentLanguage === 'id' }]"
           @click="setLanguage('id')"
+          aria-label="Switch language to Indonesian"
         >
           ID
         </button>
       </div>
-
-      <!-- Mobile Menu Button -->
-      <button 
-        class="mobile-menu-btn" 
-        @click="isMobileMenuOpen = !isMobileMenuOpen"
-        :aria-label="isMobileMenuOpen ? 'Close menu' : 'Open menu'"
-        :aria-expanded="isMobileMenuOpen"
-      >
-        <div class="hamburger" :class="{ open: isMobileMenuOpen }">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
     </div>
+  </nav>
 
-    <!-- Mobile Navigation -->
-    <Transition name="mobile-menu">
-      <div v-if="isMobileMenuOpen" class="mobile-nav">
-        <div class="mobile-nav-content">
-          <div class="mobile-nav-header">
-            <h3 class="mobile-nav-title">{{ t('navigation.home') }}</h3>
-            <button class="mobile-close-btn" @click="closeMobileMenu" aria-label="Close menu">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-          
-          <div class="mobile-nav-links">
-            <RouterLink 
-              to="/" 
-              class="mobile-nav-link" 
-              @click="closeMobileMenu"
-              :class="{ active: $route.name === 'home' }"
-            >
-              <span class="mobile-link-icon">🏠</span>
-              {{ t('navigation.home') }}
-            </RouterLink>
-            <RouterLink 
-              to="/hiragana" 
-              class="mobile-nav-link" 
-              @click="closeMobileMenu"
-              :class="{ active: $route.name === 'hiragana' }"
-            >
-              <span class="mobile-link-icon">あ</span>
-              {{ t('navigation.hiragana') }}
-            </RouterLink>
-            <RouterLink 
-              to="/katakana" 
-              class="mobile-nav-link" 
-              @click="closeMobileMenu"
-              :class="{ active: $route.name === 'katakana' }"
-            >
-              <span class="mobile-link-icon">カ</span>
-              {{ t('navigation.katakana') }}
-            </RouterLink>
-            <RouterLink 
-              to="/quiz" 
-              class="mobile-nav-link" 
-              @click="closeMobileMenu"
-              :class="{ active: $route.name === 'quiz' }"
-            >
-              <span class="mobile-link-icon">🎯</span>
-              {{ t('navigation.quiz') }}
-            </RouterLink>
-          </div>
-          
-          <!-- Mobile Language Selector -->
-          <div class="mobile-language-selector">
-            <span class="mobile-lang-label">Language:</span>
-            <div class="mobile-lang-buttons">
-              <button 
-                :class="['mobile-lang-btn', { active: currentLanguage === 'en' }]"
-                @click="setLanguage('en')"
-              >
-                EN
-              </button>
-              <button 
-                :class="['mobile-lang-btn', { active: currentLanguage === 'id' }]"
-                @click="setLanguage('id')"
-              >
-                ID
-              </button>
-            </div>
-          </div>
+  <!-- Mobile Bottom Navigation Bar (like native mobile apps) -->
+  <nav class="bottom-nav" aria-label="Mobile Navigation">
+    <div class="bottom-nav-container">
+      <!-- Home -->
+      <RouterLink 
+        to="/" 
+        class="bottom-nav-link" 
+        :class="{ active: $route.name === 'home' }"
+        @click="handleNavClick('home')"
+      >
+        <div class="bottom-nav-icon-container">
+          <svg class="bottom-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 10.5L12 3l9 7.5v10a1.5 1.5 0 0 1-1.5 1.5H4.5A1.5 1.5 0 0 1 3 20.5v-10z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
         </div>
-      </div>
-    </Transition>
+        <span class="bottom-nav-label">{{ t('navigation.home') }}</span>
+      </RouterLink>
+
+      <!-- Hiragana -->
+      <RouterLink 
+        to="/hiragana" 
+        class="bottom-nav-link" 
+        :class="{ active: $route.name === 'hiragana' }"
+        @click="handleNavClick('hiragana')"
+      >
+        <div class="bottom-nav-icon-container">
+          <span class="bottom-nav-char">あ</span>
+        </div>
+        <span class="bottom-nav-label">{{ t('navigation.hiragana') }}</span>
+      </RouterLink>
+
+      <!-- Katakana -->
+      <RouterLink 
+        to="/katakana" 
+        class="bottom-nav-link" 
+        :class="{ active: $route.name === 'katakana' }"
+        @click="handleNavClick('katakana')"
+      >
+        <div class="bottom-nav-icon-container">
+          <span class="bottom-nav-char">カ</span>
+        </div>
+        <span class="bottom-nav-label">{{ t('navigation.katakana') }}</span>
+      </RouterLink>
+
+      <!-- Kanji -->
+      <RouterLink 
+        to="/kanji" 
+        class="bottom-nav-link" 
+        :class="{ active: $route.name === 'kanji' }"
+        @click="handleNavClick('kanji')"
+      >
+        <div class="bottom-nav-icon-container">
+          <span class="bottom-nav-char">漢</span>
+        </div>
+        <span class="bottom-nav-label">{{ t('navigation.kanji') }}</span>
+      </RouterLink>
+
+      <!-- Quiz -->
+      <RouterLink 
+        to="/quiz" 
+        class="bottom-nav-link" 
+        :class="{ active: $route.name === 'quiz' }"
+        @click="handleNavClick('quiz')"
+      >
+        <div class="bottom-nav-icon-container">
+          <svg class="bottom-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="6"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </div>
+        <span class="bottom-nav-label">{{ t('navigation.quiz') }}</span>
+      </RouterLink>
+    </div>
   </nav>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
 import { useI18n } from '../composables/useI18n'
 
+const route = useRoute()
 const { t, currentLanguage, setLanguage } = useI18n()
 
 const isScrolled = ref(false)
-const isMobileMenuOpen = ref(false)
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
 }
 
-const closeMobileMenu = () => {
-  isMobileMenuOpen.value = false
+const handleNavClick = (routeName: string) => {
+  if (route.name === routeName) {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 }
 
 onMounted(() => {
@@ -318,249 +316,9 @@ onUnmounted(() => {
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.mobile-menu-btn {
+/* Mobile Bottom Navigation (Hidden on Desktop) */
+.bottom-nav {
   display: none;
-  background: rgba(139, 69, 19, 0.08);
-  border: 2px solid rgba(139, 69, 19, 0.15);
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 0.8rem;
-  z-index: 1001;
-  transition: all 0.3s ease;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(139, 69, 19, 0.1);
-}
-
-.mobile-menu-btn:hover {
-  background: rgba(139, 69, 19, 0.15);
-  border-color: rgba(139, 69, 19, 0.3);
-  box-shadow: 0 4px 8px rgba(139, 69, 19, 0.15);
-  transform: translateY(-1px);
-}
-
-.mobile-menu-btn:focus {
-  outline: 2px solid var(--chocolate-primary);
-  outline-offset: 2px;
-}
-
-.hamburger {
-  width: 28px;
-  height: 20px;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.hamburger span {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: var(--chocolate-primary);
-  border-radius: 2px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: all 0.3s ease;
-}
-
-.hamburger span:nth-child(1) {
-  top: 0px;
-}
-
-.hamburger span:nth-child(2) {
-  top: 8px;
-}
-
-.hamburger span:nth-child(3) {
-  top: 16px;
-}
-
-.hamburger.open span:nth-child(1) {
-  top: 8px;
-  transform: rotate(135deg);
-}
-
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-  left: -60px;
-}
-
-.hamburger.open span:nth-child(3) {
-  top: 8px;
-  transform: rotate(-135deg);
-}
-
-.mobile-nav {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: rgba(245, 245, 220, 0.98);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(139, 69, 19, 0.1);
-  box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
-  max-height: calc(100vh - 70px);
-  overflow-y: auto;
-}
-
-.mobile-nav-content {
-  padding: 0;
-}
-
-.mobile-nav-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem 1rem;
-  border-bottom: 1px solid rgba(139, 69, 19, 0.1);
-}
-
-.mobile-nav-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--chocolate-primary);
-  margin: 0;
-}
-
-.mobile-close-btn {
-  background: rgba(139, 69, 19, 0.1);
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem;
-  cursor: pointer;
-  color: var(--chocolate-primary);
-  transition: all 0.3s ease;
-}
-
-.mobile-close-btn:hover {
-  background: rgba(139, 69, 19, 0.2);
-}
-
-.mobile-nav-links {
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.mobile-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  text-decoration: none;
-  color: var(--chocolate-primary);
-  font-weight: 500;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  background: rgba(139, 69, 19, 0.03);
-  border: 1px solid transparent;
-  position: relative;
-  overflow: hidden;
-}
-
-.mobile-nav-link::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.1), transparent);
-  transition: left 0.5s ease;
-}
-
-.mobile-nav-link:hover::before {
-  left: 100%;
-}
-
-.mobile-nav-link:hover {
-  background: rgba(139, 69, 19, 0.1);
-  border-color: rgba(139, 69, 19, 0.2);
-  transform: translateX(5px);
-}
-
-.mobile-nav-link.active {
-  background: linear-gradient(135deg, var(--chocolate-primary), var(--chocolate-light));
-  color: var(--cream);
-  border-color: transparent;
-  transform: translateX(8px);
-  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
-  border-left: 4px solid var(--chocolate-light);
-}
-
-.mobile-nav-link.active::before {
-  width: 100%;
-}
-
-.mobile-nav-link.active .mobile-link-icon {
-  transform: scale(1.1);
-}
-
-.mobile-link-icon {
-  font-size: 1.25rem;
-  width: 28px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.mobile-language-selector {
-  padding: 1rem 2rem 2rem;
-  border-top: 1px solid rgba(139, 69, 19, 0.1);
-}
-
-.mobile-lang-label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--chocolate-light);
-  margin-bottom: 0.75rem;
-}
-
-.mobile-lang-buttons {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.mobile-lang-btn {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--chocolate-light);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--chocolate-primary);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.mobile-lang-btn:hover {
-  background: rgba(139, 69, 19, 0.1);
-  border-color: var(--chocolate-primary);
-}
-
-.mobile-lang-btn.active {
-  background: linear-gradient(135deg, var(--chocolate-primary), var(--chocolate-light));
-  color: var(--cream);
-  border-color: transparent;
-  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
-  transform: scale(1.05);
-}
-
-/* Mobile Menu Transitions */
-.mobile-menu-enter-active,
-.mobile-menu-leave-active {
-  transition: all 0.3s ease;
-}
-
-.mobile-menu-enter-from {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.mobile-menu-leave-to {
-  opacity: 0;
-  transform: translateY(-20px);
 }
 
 /* Responsive Design */
@@ -569,29 +327,154 @@ onUnmounted(() => {
     display: none;
   }
 
-  .mobile-menu-btn {
-    display: block;
-  }
-
   .nav-container {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
+    height: 60px;
   }
 
-  .language-selector {
-    display: none; /* Hide desktop language selector on mobile */
+  .brand {
+    font-size: 1.15rem;
+    gap: 0.5rem;
   }
 
   .brand-text {
-    display: none;
+    display: inline-block;
+  }
+
+  .kana-icon {
+    font-size: 1.35rem;
+  }
+
+  .language-selector {
+    display: flex;
+    padding: 0.2rem;
+    gap: 0.2rem;
+  }
+
+  .lang-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+    border-radius: 12px;
   }
 
   .navbar {
     position: fixed;
     width: 100%;
   }
+
+  /* Bottom Navigation Styles */
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(245, 245, 220, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(139, 69, 19, 0.12);
+    box-shadow: 0 -4px 20px rgba(139, 69, 19, 0.08);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .bottom-nav-container {
+    display: flex;
+    width: 100%;
+    height: 62px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 0.5rem;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .bottom-nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    text-decoration: none;
+    color: rgba(139, 69, 19, 0.62);
+    transition: all 0.2s ease;
+    padding: 4px 0;
+    gap: 2px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .bottom-nav-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 28px;
+    border-radius: 14px;
+    transition: all 0.25s ease;
+  }
+
+  .bottom-nav-icon {
+    display: block;
+    color: inherit;
+    transition: transform 0.2s ease;
+  }
+
+  .bottom-nav-char {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
+    color: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+    transition: transform 0.2s ease;
+  }
+
+  .bottom-nav-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    color: inherit;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+    white-space: nowrap;
+  }
+
+  /* Active tab */
+  .bottom-nav-link.active {
+    color: var(--chocolate-primary);
+  }
+
+  .bottom-nav-link.active .bottom-nav-icon-container {
+    background: rgba(139, 69, 19, 0.12);
+  }
+
+  .bottom-nav-link.active .bottom-nav-icon,
+  .bottom-nav-link.active .bottom-nav-char {
+    transform: scale(1.08);
+  }
+
+  .bottom-nav-link.active .bottom-nav-label {
+    font-weight: 700;
+    color: var(--chocolate-primary);
+  }
+
+  /* Press effect */
+  .bottom-nav-link:active {
+    transform: scale(0.94);
+  }
 }
 
 @media (max-width: 480px) {
+  .nav-container {
+    padding: 0 1rem;
+    height: 56px;
+  }
+
+  .brand {
+    font-size: 1.1rem;
+  }
+
   .brand-icon {
     gap: 0.1rem;
   }
@@ -600,28 +483,33 @@ onUnmounted(() => {
     font-size: 1.25rem;
   }
 
-  .mobile-nav-content {
-    padding: 0;
+  .bottom-nav-container {
+    height: 58px;
+    padding: 0 0.25rem;
   }
 
-  .mobile-nav-header {
-    padding: 1rem;
+  .bottom-nav-icon-container {
+    width: 40px;
+    height: 26px;
   }
 
-  .mobile-nav-links {
-    padding: 0.5rem 1rem;
+  .bottom-nav-char {
+    font-size: 1.05rem;
   }
 
-  .mobile-nav-link {
-    padding: 0.75rem 1rem;
+  .bottom-nav-label {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-text {
+    font-size: 0.95rem;
   }
 
-  .mobile-language-selector {
-    padding: 1rem;
-  }
-
-  .mobile-menu-btn {
-    padding: 0.5rem;
+  .lang-btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
   }
 }
 </style>

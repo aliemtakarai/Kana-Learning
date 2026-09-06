@@ -10,7 +10,11 @@ Kana Learning is a modern, responsive web application designed to help users lea
   - **Dakuten (゛)**: 20 Hiragana & 20 Katakana characters.
   - **Handakuten (゜)**: 5 Hiragana & 5 Katakana characters.
   - **Combination (拗音 / Yōon)**: 33 Hiragana & 33 Katakana blended syllable characters (e.g., `きゃ`, `シュ`, `ちょ`).
-- **Interactive Character Cards & Modals**: View Romaji, pronunciation guides, and example vocabulary.
+- **JLPT Kanji Reference (N5 to N1)**:
+  - Categorized by JLPT levels: **N5** (Beginner), **N4** (Elementary), **N3** (Intermediate), **N2** (Upper Intermediate), and **N1** (Advanced).
+  - Search by Kanji, On'yomi, Kun'yomi, or English/Indonesian meanings in real time.
+  - Interactive modals with stroke counts, readings, meanings, and practical vocabulary examples.
+- **Interactive Character Cards & Modals**: View Romaji, On'yomi/Kun'yomi, pronunciation guides, and example vocabulary.
 - **Adaptive Quiz System**:
   - **Basic Level (92 characters)**: Hiragana & Katakana fundamentals.
   - **Intermediate Level (142 characters)**: Includes Dakuten & Handakuten marks.
@@ -29,9 +33,9 @@ src/
 ├── main.ts         # App entry point
 ├── components/     # Reusable components (e.g., NavBar)
 ├── composables/    # Reusable composables (i18n support)
-├── data/           # Kana dataset (Basic, Dakuten, Handakuten, Combination)
+├── data/           # Datasets (kanaData.ts, kanjiData.ts)
 ├── router/         # Vue Router configuration
-└── views/          # Page views (Home, Hiragana, Katakana, Quiz)
+└── views/          # Page views (Home, Hiragana, Katakana, Kanji, Quiz)
 ```
 
 ## 🚀 Getting Started

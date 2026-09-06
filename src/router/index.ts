@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Hiragana from '../views/Hiragana.vue'
 import Katakana from '../views/Katakana.vue'
+import Kanji from '../views/Kanji.vue'
 import Quiz from '../views/Quiz.vue'
 
 const router = createRouter({
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/katakana',
       name: 'katakana',
       component: Katakana
+    },
+    {
+      path: '/kanji',
+      name: 'kanji',
+      component: Kanji
     },
     {
       path: '/quiz/:level?',

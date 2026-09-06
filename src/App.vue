@@ -104,10 +104,14 @@ a:focus-visible {
   background: #8B4513;
 }
 
-/* Responsive typography */
+/* Responsive typography & mobile layout */
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
+  }
+
+  .main-content {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -139,6 +143,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Print styles */
 @media print {
   .navbar,
+  .bottom-nav,
   .hero-cta,
   .quiz-cta-section {
     display: none;
