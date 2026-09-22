@@ -117,7 +117,6 @@
                     value="kanaToRomaji" 
                     v-model="quizType"
                   >
-                  <span class="radio-custom"></span>
                   {{ t('quiz.types.kanaToRomaji') }}
                 </label>
                 <label class="radio-option">
@@ -126,7 +125,6 @@
                     value="romajiToKana" 
                     v-model="quizType"
                   >
-                  <span class="radio-custom"></span>
                   {{ t('quiz.types.romajiToKana') }}
                 </label>
               </div>
@@ -139,7 +137,6 @@
                     value="kanjiToMeaning" 
                     v-model="quizType"
                   >
-                  <span class="radio-custom"></span>
                   {{ t('quiz.types.kanjiToMeaning') }}
                 </label>
                 <label class="radio-option">
@@ -148,7 +145,6 @@
                     value="meaningToKanji" 
                     v-model="quizType"
                   >
-                  <span class="radio-custom"></span>
                   {{ t('quiz.types.meaningToKanji') }}
                 </label>
                 <label class="radio-option">
@@ -157,7 +153,6 @@
                     value="kanjiToReading" 
                     v-model="quizType"
                   >
-                  <span class="radio-custom"></span>
                   {{ t('quiz.types.kanjiToReading') }}
                 </label>
               </div>
@@ -879,7 +874,7 @@ watch(() => [props.level, route.query], () => {
 
 .level-card.selected {
   border-color: var(--chocolate-primary);
-  background: linear-gradient(135deg, rgba(139, 69, 19, 0.04), rgba(205, 133, 63, 0.08));
+  background: #ffffff;
   box-shadow: 0 8px 25px rgba(139, 69, 19, 0.18);
   transform: translateY(-2px);
 }
@@ -963,15 +958,16 @@ watch(() => [props.level, route.query], () => {
 .radio-option {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
   cursor: pointer;
   font-weight: 500;
   color: var(--chocolate-primary);
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.75rem;
   border-radius: 12px;
   border: 2px solid rgba(139, 69, 19, 0.1);
   transition: all 0.3s ease;
   background: white;
+  text-align: center;
 }
 
 .radio-option:hover {
@@ -981,43 +977,16 @@ watch(() => [props.level, route.query], () => {
 }
 
 .radio-option:has(input[type="radio"]:checked) {
-  background: linear-gradient(135deg, var(--chocolate-primary), var(--chocolate-light));
-  color: var(--cream);
-  border-color: transparent;
-  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+  background: #ffffff;
+  color: var(--chocolate-primary);
+  border-color: var(--chocolate-primary);
+  box-shadow: 0 8px 25px rgba(139, 69, 19, 0.18);
   transform: translateY(-2px);
+  font-weight: 600;
 }
 
 .radio-option input[type="radio"] {
   display: none;
-}
-
-.radio-custom {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--chocolate-light);
-  border-radius: 50%;
-  position: relative;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.radio-option input[type="radio"]:checked + .radio-custom {
-  border-color: var(--cream);
-  background: var(--cream);
-  box-shadow: 0 0 0 2px var(--chocolate-primary);
-}
-
-.radio-option input[type="radio"]:checked + .radio-custom::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  background: var(--chocolate-primary);
-  border-radius: 50%;
 }
 
 .start-quiz-btn {
@@ -1217,8 +1186,8 @@ watch(() => [props.level, route.query], () => {
 
 .answer-btn.selected {
   border-color: var(--chocolate-primary);
-  background: var(--chocolate-primary);
-  color: var(--cream);
+  background: #ffffff;
+  color: var(--chocolate-primary);
 }
 
 .answer-btn.correct {

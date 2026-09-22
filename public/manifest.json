@@ -1,0 +1,32 @@
+{
+  "name": "Kana Learning - Japanese Study",
+  "short_name": "Kana Learning",
+  "description": "Master Japanese Hiragana, Katakana, and JLPT Kanji with interactive charts and quizzes.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F5F5DC",
+  "theme_color": "#8B4513",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/hero/image.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/hero/image.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/hero/image.webp",
+      "sizes": "192x192 512x512",
+      "type": "image/webp",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["education", "books", "utilities"]
+}

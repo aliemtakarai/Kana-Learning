@@ -4,18 +4,13 @@
     <main class="main-content">
       <RouterView />
     </main>
+    <PwaBanner />
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import NavBar from './components/NavBar.vue'
-
-// Initialize app
-onMounted(() => {
-  // Add any global initialization here
-  document.title = 'Kana Study - Learn Hiragana & Katakana'
-})
+import PwaBanner from './components/PwaBanner.vue'
 </script>
 
 <style>
