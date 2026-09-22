@@ -3,6 +3,12 @@
     <!-- 1. Content Update Notification Banner -->
     <Transition name="slide-up">
       <div v-if="needRefresh" class="pwa-banner update-banner" role="alert">
+        <button @click="dismissUpdate" class="banner-corner-close" :aria-label="t('pwa.dismiss')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
         <div class="banner-icon-wrap update-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
@@ -16,9 +22,6 @@
           <button @click="updateServiceWorker" class="pwa-btn primary">
             {{ t('pwa.updateBtn') }}
           </button>
-          <button @click="dismissUpdate" class="pwa-btn text" :aria-label="t('pwa.dismiss')">
-            {{ t('pwa.dismiss') }}
-          </button>
         </div>
       </div>
     </Transition>
@@ -26,6 +29,12 @@
     <!-- 2. Add to Homescreen Banner -->
     <Transition name="slide-up">
       <div v-if="canInstall && !needRefresh" class="pwa-banner install-banner" role="region" aria-label="Install App">
+        <button @click="dismissInstall" class="banner-corner-close" :aria-label="t('pwa.dismiss')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
         <img src="/hero/image.webp" alt="Kana Learning" class="app-icon" />
         <div class="banner-content">
           <div class="banner-title">{{ t('pwa.installTitle') }}</div>
@@ -39,12 +48,6 @@
               <line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
             {{ t('pwa.installBtn') }}
-          </button>
-          <button @click="dismissInstall" class="close-btn" :aria-label="t('pwa.dismiss')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"/>
-              <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
           </button>
         </div>
       </div>
@@ -130,16 +133,42 @@ const { t } = useI18n()
 }
 
 .pwa-banner {
+  position: relative;
   pointer-events: auto;
   background: #ffffff;
   border-radius: 18px;
   padding: 1.15rem 1.25rem;
+  padding-right: 2.75rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   box-shadow: 0 12px 36px rgba(139, 69, 19, 0.2), 0 2px 8px rgba(139, 69, 19, 0.08);
   border: 1.5px solid rgba(139, 69, 19, 0.15);
   backdrop-filter: blur(10px);
+}
+
+.banner-corner-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8B4513;
+  background: rgba(139, 69, 19, 0.08);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.banner-corner-close:hover {
+  background: rgba(139, 69, 19, 0.18);
+  color: #5c3a21;
+  transform: scale(1.08);
 }
 
 .update-banner {
@@ -388,7 +417,15 @@ const { t } = useI18n()
 
   .pwa-banner {
     padding: 0.9rem 1rem;
+    padding-right: 2.5rem;
     gap: 0.75rem;
+  }
+
+  .banner-corner-close {
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
   }
 
   .banner-actions {
