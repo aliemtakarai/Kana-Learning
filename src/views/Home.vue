@@ -143,7 +143,7 @@
           </div>
           
           <!-- Kana Grid -->
-          <div class="modern-kana-grid">
+          <div :class="['modern-kana-grid', { 'combination-grid': activeCategory === 'combination' }]">
             <div 
               v-for="(char, index) in getCurrentCharacters" 
               :key="`${activeChart}-${activeCategory}-${index}`"
@@ -678,11 +678,23 @@ onMounted(() => {
   gap: 1rem;
 }
 
+.modern-kana-grid.combination-grid {
+  grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+}
+
 .modern-kana-card {
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
   will-change: transform, opacity;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.modern-kana-card:active .card-content {
+  transform: scale(0.95);
+  background: white;
+  border-color: var(--chocolate-primary);
 }
 
 .card-content {
@@ -872,16 +884,29 @@ onMounted(() => {
 @media (max-width: 1024px) {
   .modern-chart-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
   }
   
   .category-tabs {
-    flex-direction: row;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
   }
   
   .category-tab {
-    min-width: 200px;
+    min-width: 0;
+    padding: 1rem 0.85rem;
+    justify-content: center;
+  }
+
+  .category-tab:hover {
+    transform: translateY(-2px);
+  }
+
+  .category-tab.active {
+    transform: translateY(-2px);
+    border-left: 1px solid rgba(139, 69, 19, 0.1);
+    box-shadow: 0 4px 14px rgba(139, 69, 19, 0.25);
   }
 }
 
@@ -919,9 +944,21 @@ onMounted(() => {
   }
   
   .features-section,
-  .charts-section,
   .quiz-cta-section {
     padding: 3.5rem 0;
+  }
+
+  .charts-section {
+    padding: 3rem 0;
+  }
+
+  .charts-section .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .charts-section .section-header h2 {
+    font-size: 2.1rem;
+    margin-bottom: 0.5rem;
   }
 
   .features-grid {
@@ -933,8 +970,80 @@ onMounted(() => {
   }
   
   .chart-selector {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto 2rem;
+  }
+
+  .selector-btn {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .modern-chart-container {
+    padding: 1.5rem;
+    border-radius: 20px;
+    gap: 1.5rem;
+  }
+
+  .category-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+
+  .category-tab {
+    padding: 0.85rem 1rem;
+    gap: 0.65rem;
+    min-width: 0;
+    border-radius: 12px;
+  }
+
+  .tab-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .tab-text {
+    font-size: 0.88rem;
+  }
+
+  .category-tab:hover,
+  .category-tab.active {
+    transform: translateY(-2px);
+    border-left: 1px solid rgba(139, 69, 19, 0.1);
+  }
+
+  .modern-kana-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .modern-kana-grid.combination-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .card-content {
+    padding: 0.85rem 0.25rem;
+    border-radius: 12px;
+  }
+
+  .kana-display {
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .romaji-display {
+    font-size: 0.8rem;
   }
   
   .cta-content {
@@ -987,40 +1096,132 @@ onMounted(() => {
   }
 
   .features-section,
-  .charts-section,
   .quiz-cta-section {
     padding: 2.75rem 0;
   }
 
+  .charts-section {
+    padding: 2.25rem 0;
+  }
+
+  .charts-section .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .charts-section .section-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .chart-selector {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 320px;
+  }
+
+  .selector-btn {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.88rem;
+    border-radius: 30px;
+  }
+
+  .btn-icon {
+    font-size: 1.15rem;
+  }
+
   .container {
-    padding: 0 1rem;
+    padding: 0 0.85rem;
   }
   
   .modern-chart-container {
-    padding: 1rem;
+    padding: 1rem 0.65rem;
+    border-radius: 18px;
+    gap: 1.25rem;
   }
   
   .category-tabs {
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
   }
   
   .category-tab {
-    padding: 1rem;
-    min-width: 150px;
+    padding: 0.65rem 0.55rem;
+    gap: 0.45rem;
+    border-radius: 10px;
+  }
+  
+  .tab-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .tab-text {
+    font-size: 0.78rem;
+    line-height: 1.2;
   }
   
   .modern-kana-grid {
-    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
-    gap: 0.8rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+
+  .modern-kana-grid.combination-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .card-content {
+    padding: 0.65rem 0.15rem;
+    border-radius: 10px;
   }
 
   .kana-display {
-    font-size: 1.6rem;
+    font-size: 1.45rem;
+    margin-bottom: 0.15rem;
+    line-height: 1.15;
     white-space: nowrap;
   }
-  
-  .section-header h2 {
-    font-size: 1.85rem;
+
+  .combination-grid .kana-display {
+    font-size: 1.35rem;
+  }
+
+  .romaji-display {
+    font-size: 0.72rem;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 360px) {
+  .charts-section .container {
+    padding: 0 0.5rem;
+  }
+
+  .modern-chart-container {
+    padding: 0.85rem 0.45rem;
+  }
+
+  .category-tabs {
+    gap: 0.35rem;
+  }
+
+  .category-tab {
+    padding: 0.55rem 0.4rem;
+    gap: 0.35rem;
+  }
+
+  .tab-text {
+    font-size: 0.72rem;
+  }
+
+  .modern-kana-grid {
+    gap: 0.35rem;
+  }
+
+  .kana-display {
+    font-size: 1.35rem;
   }
 }
 

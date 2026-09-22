@@ -5,7 +5,6 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-badge">
-            <span class="badge-icon">漢</span>
             {{ t('navigation.kanji') }}
           </div>
           <h1 class="hero-title">{{ t('kanji.title') }}</h1>
@@ -274,7 +273,7 @@ const closeModal = () => {
 .hero-section {
   background: linear-gradient(135deg, var(--chocolate-primary) 0%, var(--chocolate-light) 50%, var(--chocolate-lighter) 100%);
   color: var(--cream);
-  padding: 4rem 0;
+  padding: 2rem 0 2.5rem;
 }
 
 .container {
@@ -292,24 +291,26 @@ const closeModal = () => {
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   background: rgba(245, 245, 220, 0.2);
-  padding: 0.75rem 1.5rem;
+  padding: 0.4rem 1.25rem;
   border-radius: 50px;
-  font-weight: 500;
-  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 5rem;
   border: 1px solid rgba(245, 245, 220, 0.3);
 }
 
 .badge-icon {
-  font-size: 1.5rem;
+  font-size: 3rem;
+  line-height: 1;
   font-weight: bold;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
   background: linear-gradient(45deg, var(--cream), var(--warm-beige));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -317,16 +318,19 @@ const closeModal = () => {
 }
 
 .hero-description {
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.5;
   opacity: 0.9;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
@@ -336,13 +340,13 @@ const closeModal = () => {
 
 .stat-number {
   display: block;
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--warm-beige);
 }
 
 .stat-label {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   opacity: 0.8;
 }
 
@@ -736,21 +740,38 @@ const closeModal = () => {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hero-section {
+    padding: 1.75rem 0 2rem;
+  }
+
   .hero-stats {
     gap: 1.5rem;
   }
 
   .category-selector {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem 0.75rem;
+    justify-content: flex-start;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
+  .category-selector::-webkit-scrollbar {
+    display: none;
   }
 
   .category-btn {
-    min-width: 280px;
+    min-width: 140px;
+    flex-shrink: 0;
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
   }
 
   .kana-grid {
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 1rem;
   }
 
@@ -766,8 +787,41 @@ const closeModal = () => {
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    padding: 1.5rem 0 1.5rem;
+  }
+
+  .hero-badge {
+    padding: 0.35rem 1rem;
+    font-size: 5rem;
+  }
+
+  .badge-icon {
+    font-size: 2.4rem;
+  }
+
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-stats {
+    gap: 1rem;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
   }
 
   .kana-grid {

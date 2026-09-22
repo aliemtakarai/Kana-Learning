@@ -184,6 +184,15 @@ const translations: Translations = {
       description: 'Learn Japanese writing systems with modern, interactive tools.',
       mission: 'Our mission is to make learning Japanese characters accessible and enjoyable for everyone.',
       features: 'Features include interactive character charts, progressive quizzes, and multilingual support.'
+    },
+    pwa: {
+      installTitle: 'Install Kana Learning',
+      installDesc: 'Add to Home Screen for fast offline practice.',
+      installBtn: 'Install App',
+      dismiss: 'Dismiss',
+      updateTitle: 'New Content Available!',
+      updateDesc: 'A new update is ready. Tap to refresh the app.',
+      updateBtn: 'Update Now'
     }
   },
   id: {
@@ -359,6 +368,15 @@ const translations: Translations = {
       description: 'Pelajari sistem penulisan Jepang dengan alat modern dan interaktif.',
       mission: 'Misi kami adalah membuat pembelajaran karakter Jepang dapat diakses dan menyenangkan untuk semua orang.',
       features: 'Fitur termasuk tabel karakter interaktif, kuis progresif, dan dukungan multibahasa.'
+    },
+    pwa: {
+      installTitle: 'Pasang Kana Learning',
+      installDesc: 'Tambahkan ke Layar Utama untuk akses cepat dan belajar offline.',
+      installBtn: 'Pasang Aplikasi',
+      dismiss: 'Nanti',
+      updateTitle: 'Konten Baru Tersedia!',
+      updateDesc: 'Pembaruan baru siap. Ketuk untuk memuat ulang aplikasi.',
+      updateBtn: 'Perbarui Sekarang'
     }
   }
 };

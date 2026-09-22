@@ -44,4 +44,17 @@ const router = createRouter({
   }
 })
 
+const pageTitles: Record<string, string> = {
+  home: 'Kana Learning - Master Japanese Hiragana, Katakana & JLPT Kanji',
+  hiragana: 'Hiragana Characters & Charts - Kana Learning',
+  katakana: 'Katakana Characters & Charts - Kana Learning',
+  kanji: 'JLPT Kanji Reference (N5-N1) - Kana Learning',
+  quiz: 'Japanese Practice Quiz - Kana Learning'
+}
+
+router.afterEach((to) => {
+  const routeName = (to.name as string) || 'home'
+  document.title = pageTitles[routeName] || 'Kana Learning - Master Japanese Hiragana, Katakana & JLPT Kanji'
+})
+
 export default router
